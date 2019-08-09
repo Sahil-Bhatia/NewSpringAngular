@@ -1,0 +1,42 @@
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> 
+        <title>Withdraw Money
+        </title>
+    </head>
+    
+    <section>
+        <div class="container-fluid w-60 mt-5" >
+  
+        <div class="w-50 mx-auto">
+                <div><h3>Withdraw Money</h3></div>
+            <form #accountForm=ngForm (ngSubmit)="withdrawMoney()">
+     
+                <div class="form-group">
+                    <label for="inputmobile">Account Mobile</label>
+                    <input type="number" class="form-control" id="accountmobile"  name="accountmobile" 
+                    [(ngModel)]="accountMobile" #mobilecontrol="ngModel"  autocomplete="off" max="10" required aria-describedby="accountmobilehelp"
+                    placeholder="Enter Mobile No.">
+                    <small id="accountmobilehelp"  class="form-text text-muted alert alert-danger" role="alert"  
+                    *ngIf="mobilecontrol.touched && mobilecontrol.invalid">Mobile No. is required</small>
+                </div>
+                <div class="form-group">
+                    <label for="inputamount">Withdraw Amount</label>
+                    <input type="number" class="form-control" id="withdrawAmount" name="withdrawAmount" 
+                    [(ngModel)]="withdrawAmount" #amountcontrol="ngModel"  autocomplete="off" required aria-describedby="withdrawAmountHelp" 
+                    placeholder="Enter withdraw Amount">
+                    <small id="withdrawAmountHelp"  class="form-text text-muted alert alert-danger" role="alert"
+                    *ngIf="amountcontrol.touched && amountcontrol.invalid">Withdraw Amount is required</small>
+                </div>         
+                 
+                <div>
+                    <input type="submit" value="Withdraw Money" [disabled]="accountForm.invalid" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+        </div>
+    </section>

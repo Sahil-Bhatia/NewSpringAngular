@@ -1,0 +1,56 @@
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> 
+        <title>Find Account
+        </title>
+    </head>
+    
+    <section>
+        <div class="container-fluid w-60 mt-5" >
+        <div class="w-50 mx-auto">
+            
+        <div><h3>Find Account By Mobile Number</h3></div>
+            <form #accountForm=ngForm (ngSubmit)="findAccount()">
+    
+                <div class="form-group">
+                    <label for="inputmobile">Account Mobile</label>
+                    <input type="number" class="form-control" id="accountmobile"  name="accountmobile" 
+                    [(ngModel)]="accountMobile" #mobilecontrol="ngModel"  autocomplete="off" max="10" required aria-describedby="accountmobilehelp"
+                    placeholder="Enter Mobile No.">
+                    <small id="accountmobilehelp"  class="form-text text-muted alert alert-danger" role="alert"  
+                    *ngIf="mobilecontrol.touched && mobilecontrol.invalid">Mobile No. is required</small>
+                </div>
+                 
+                <div>
+                    <input type="submit" value="Find Account" [disabled]="accountForm.invalid" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+        </div>
+    </section>
+    
+<section>
+        <div class="container-fluid w-80 mt-5" >
+        <div class="w-80 mx-auto">
+        <table border="1" class="table table-bordered table-hover ">
+            <tr>
+                <th>Account Id</th>
+                <th>Account Holder Name</th>
+                <th>Mobile No.</th>
+                <th>Balance</th>
+             
+            </tr>
+            <tr *ngFor="let ac of findAccountsList; let i = index ">
+                <td>{{ac.accountId}}</td>
+                <td>{{ac.accountHolder }}</td> 
+                <td>{{ac.accountMobile}}</td>
+                <td>{{ac.accountBalance | currency:'INR':'symbol'}}</td>
+            </tr>
+        </table>     
+        </div>
+        </div>
+    </section>

@@ -1,0 +1,51 @@
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> 
+        <title>Transfer Money
+        </title>
+    </head>
+    
+    <section>
+        <div class="container-fluid w-60 mt-5" >
+  
+        <div class="w-50 mx-auto">
+                <div><h3>Transfer Money</h3></div>
+            <form #accountForm=ngForm (ngSubmit)="transferMoney()">
+     
+                <div class="form-group">
+                    <label for="inputmobile1">From Account Mobile</label>
+                    <input type="number" class="form-control" id="fromaccountmobile"  name="fromaccountmobile" 
+                    [(ngModel)]="fromAccountMobile" #mobilecontrol1="ngModel"  autocomplete="off" max="10" required aria-describedby="fromaccountmobilehelp"
+                    placeholder="Enter Mobile No.">
+                    <small id="fromaccountmobilehelp"  class="form-text text-muted alert alert-danger" role="alert"  
+                    *ngIf="mobilecontrol1.touched && mobilecontrol1.invalid">From Account Mobile No. is required</small>
+                </div>
+                
+                <div class="form-group">
+                        <label for="inputmobile2">Send To Account Mobile</label>
+                        <input type="number" class="form-control" id="toaccountmobile"  name="toaccountmobile" 
+                        [(ngModel)]="toAccountMobile" #mobilecontrol2="ngModel"  autocomplete="off" max="10" required aria-describedby="toaccountmobilehelp"
+                        placeholder="Enter Mobile No.">
+                        <small id="toaccountmobilehelp"  class="form-text text-muted alert alert-danger" role="alert"  
+                        *ngIf="mobilecontrol2.touched && mobilecontrol2.invalid">Send To Account Mobile No. is required</small>
+                    </div>
+                <div class="form-group">
+                    <label for="inputamount">Transfer Amount</label>
+                    <input type="number" class="form-control" id="transferMoney" name="transferMoney" 
+                    [(ngModel)]="transferAmount" #amountcontrol="ngModel"  autocomplete="off" required aria-describedby="transferAmountHelp" 
+                    placeholder="Enter Transfer Amount">
+                    <small id="transferAmountHelp"  class="form-text text-muted alert alert-danger" role="alert"
+                    *ngIf="amountcontrol.touched && amountcontrol.invalid">Transfer Amount is required</small>
+                </div>         
+                 
+                <div>
+                    <input type="submit" value="Transfer Money" [disabled]="accountForm.invalid" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+        </div>
+    </section>
